@@ -1,47 +1,25 @@
-// Basic structure of a Node for an integer linked list
 class Node {
-    int data;      // The actual data stored in this node
-    Node next;     // Reference to the next node in the sequence
-
-    // Constructor to initialize a new node
+    int data;      
+    Node next;     
     public Node(int data) {
         this.data = data;
-        this.next = null; // Initially, the next node is null
+        this.next = null; 
     }
 }
-// A simple Linked List class to manage the nodes
 class SimpleLinkedList {
-    Node head; // Reference to the first node in the list
-    // Node tail;
-    // Constructor for an empty list
+    Node head; 
     public SimpleLinkedList() {
-        this.head = null;
-        // this.tail = null;
+        this.head = null;   
     }
-    
-
-    // Method to add a new node to the beginning of the list
     public void addFirst(int data) {
-        Node newNode = new Node(data); // Create a new node
-        newNode.next = head;           // New node's next points to the current head
-        head = newNode;                // Update the head to be the new node
-        // if(tail==null){
-        //     tail=newNode;
-        // }
+        Node newNode = new Node(data); 
+        newNode.next = head;           
+        head = newNode;                
     }
     public void addLast(int data){
-    //     Node newNode=new Node(data);
-    //     if(head==null){
-    //         head=newNode;
-
-    //     }
-    //     else{
-    //         tail.next=newNode;
-    //     }
-    //     tail=newNode;
-        Node newNode = new Node(data); // Create a new node
+        Node newNode = new Node(data);
         if (head == null) {
-            head = newNode; // If list is empty, new node becomes the head
+            head = newNode; 
             return;
         }
         Node current = head;
@@ -49,16 +27,15 @@ class SimpleLinkedList {
         while (current.next != null) {
             current = current.next;
         }
-        current.next = newNode; // Last node's next points to the new node
+        current.next = newNode; 
     }
-    // Method to display the contents of the list (traversal)
     public void displayList() {
-        Node current = head; // Start from the head
-        while (current != null) { // Continue until we reach the end (null)
+        Node current = head;
+        while (current != null) { 
             System.out.print(current.data + " -> ");
-            current = current.next; // Move to the next node
+            current = current.next; 
         }
-        System.out.println("null"); // Indicate the end of the list
+        System.out.println("null"); 
     }
     public boolean contains(int key){
         Node curr=head;
@@ -87,13 +64,28 @@ class SimpleLinkedList {
             curr=curr.next;
             count++;
         }
-        if(curr==nul){
-            addLast(node);
+        if(curr==null){
+            addLast(data);
             return; 
         }
         newNode.next=curr.next;
         curr.next=newNode;
-
+    }
+    public void deleteFirst(){
+        if(head==null){
+            return;
+        }
+        head=head.next;
+    }
+    public void deleteLast(){
+        if(head==null){
+            return;
+        }
+        Node curr=head;
+        while(curr.next.next!=null){
+            curr=curr.next;
+        }
+        curr.next=null;
     }
 }
 public class LinkedList{
